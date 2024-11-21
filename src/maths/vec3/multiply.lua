@@ -1,0 +1,35 @@
+-- ROBLOX NOTE: no upstream
+--[[*
+ * Multiply the coordinates of the given vectors (A*B).
+ *
+ * @param {vec3} out - receiving vector
+ * @param {vec3} a - first operand
+ * @param {vec3} b - second operand
+ * @returns {vec3} out
+ * @alias module:modeling/maths/vec3.multiply
+ ]]
+local function multiply(out, a, b)
+	out[
+		1 --[[ ROBLOX adaptation: added 1 to array index ]]
+	] = a[
+		1 --[[ ROBLOX adaptation: added 1 to array index ]]
+	] * b[
+			1 --[[ ROBLOX adaptation: added 1 to array index ]]
+		]
+	out[
+		2 --[[ ROBLOX adaptation: added 1 to array index ]]
+	] = a[
+		2 --[[ ROBLOX adaptation: added 1 to array index ]]
+	] * b[
+			2 --[[ ROBLOX adaptation: added 1 to array index ]]
+		]
+	out[
+		3 --[[ ROBLOX adaptation: added 1 to array index ]]
+	] = a[
+		3 --[[ ROBLOX adaptation: added 1 to array index ]]
+	] * b[
+			3 --[[ ROBLOX adaptation: added 1 to array index ]]
+		]
+	return out
+end
+return multiply

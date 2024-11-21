@@ -1,0 +1,26 @@
+{
+  "name": "OpenLuaCAD",
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "DevPackages": {
+        "$path": "DevPackages"
+      },
+      "Packages": {
+        "$className": "Folder",
+        "$path": "Packages",
+        "Project": {
+          "$path": "dist/src"
+        },
+        "test": {
+          "$path": "test"
+        }
+      }
+    },
+    "ServerScriptService": {
+      "run-tests": {
+        "$path": "dist/run-tests.server.luau"
+      }
+    }
+  }
+}

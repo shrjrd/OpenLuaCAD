@@ -1,0 +1,27 @@
+-- ROBLOX NOTE: no upstream
+local JestGlobals = require("@DevPackages/JestGlobals")
+local test, expect = JestGlobals.test, JestGlobals.expect
+
+local origin, create, fromPoints
+do
+	local ref = require("./init")
+	origin, create, fromPoints = ref.origin, ref.create, ref.fromPoints
+end
+local compareVectors = require("../../../test/helpers/init").compareVectors
+test("line3: origin() should return proper origins", function()
+	local line1 = create()
+	local org1 = origin(line1)
+	expect(compareVectors(org1, { 0, 0, 0 })).toBe(true)
+	local line2 = fromPoints(create(), { 1, 0, 0 }, { 0, 1, 0 })
+	local org2 = origin(line2)
+	expect(compareVectors(org2, { 1, 0, 0 })).toBe(true)
+	local line3 = fromPoints(create(), { 0, 1, 0 }, { 1, 0, 0 })
+	local org3 = origin(line3)
+	expect(compareVectors(org3, { 0, 1, 0 })).toBe(true)
+	local line4 = fromPoints(create(), { 0, 0, 6 }, { 0, 6, 0 })
+	local org4 = origin(line4)
+	expect(compareVectors(org4, { 0, 0, 6 })).toBe(true)
+	local line5 = fromPoints(create(), { -5, -5, -5 }, { 5, 5, 5 })
+	local org5 = origin(line5)
+	expect(compareVectors(org5, { -5, -5, -5 })).toBe(true)
+end)

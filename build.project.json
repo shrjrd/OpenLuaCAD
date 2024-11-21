@@ -1,0 +1,6 @@
+{
+  "name": "OpenLuaCAD",
+  "tree": {
+    "$path": "dist/src"
+  }
+}

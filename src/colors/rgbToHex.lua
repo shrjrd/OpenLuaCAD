@@ -30,7 +30,7 @@ local function rgbToHex(
 	local b = values[
 		3 --[[ ROBLOX adaptation: added 1 to array index ]]
 	] * 255
-	local s = ("#%s"):format(tostring(tonumber(0x1000000 + r * 0x10000 + g * 0x100 + b):toString(16):substring(1, 7)))
+	local s = ("#%s"):format(tostring(tonumber(0x1000000 + r * 0x10000 + g * 0x100 + b):toString(16):sub(1, 7)))
 	if
 		#values
 		> 3 --[[ ROBLOX CHECK: operator '>' works only if either both arguments are strings or both are a number ]]

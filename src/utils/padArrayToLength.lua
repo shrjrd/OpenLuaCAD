@@ -12,11 +12,13 @@ local Array = LuauPolyfill.Array
  ]]
 local function padArrayToLength(anArray, padding, targetLength)
 	anArray = Array.slice(anArray) --[[ ROBLOX CHECK: check if 'anArray' is an Array ]]
+	local arrayLength = #anArray
 	while
-		#anArray
+		arrayLength
 		< targetLength --[[ ROBLOX CHECK: operator '<' works only if either both arguments are strings or both are a number ]]
 	do
-		table.insert(anArray, padding) --[[ ROBLOX CHECK: check if 'anArray' is an Array ]]
+		arrayLength = arrayLength + 1
+		anArray[arrayLength] = padding -- table.insert(anArray, padding) --[[ ROBLOX CHECK: check if 'anArray' is an Array ]]
 	end
 	return anArray
 end

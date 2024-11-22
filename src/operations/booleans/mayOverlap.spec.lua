@@ -7,7 +7,7 @@ local geom3 = require("../../geometries").geom3
 local cuboid = require("../../primitives").cuboid
 local mayOverlap = require("./mayOverlap")
 local center = require("../transforms/center").center
-test:only("mayOverlap: determination of overlap is reliable", function()
+test.only("mayOverlap: determination of overlap is reliable", function()
 	local geometry1 = center({ relativeTo = { 0, 0, 0 } }, cuboid({ size = { 4, 4, 4 } }))
 	local geometry2 = center({ relativeTo = { 0, 0, 0 } }, cuboid({ size = { 2, 2, 2 } }))
 	expect(mayOverlap(geometry1, geometry2)).toBe(true) -- overlap at each corner

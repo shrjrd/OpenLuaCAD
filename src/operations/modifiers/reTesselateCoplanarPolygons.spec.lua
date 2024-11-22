@@ -19,7 +19,7 @@ local function rotatePoly3(angles, polygon)
 	] * 0.017453292519943295)
 	return poly3.transform(matrix, polygon)
 end
-test:only("retessellateCoplanarPolygons: should merge coplanar polygons", function()
+test.only("retessellateCoplanarPolygons: should merge coplanar polygons", function()
 	local polyA = poly3.create({ { -5, -5, 0 }, { 5, -5, 0 }, { 5, 5, 0 }, { -5, 5, 0 } })
 	local polyB = poly3.create({ { 5, -5, 0 }, { 8, 0, 0 }, { 5, 5, 0 } })
 	local polyC = poly3.create({ { -5, 5, 0 }, { -8, 0, 0 }, { -5, -5, 0 } })

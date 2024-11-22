@@ -13,7 +13,7 @@
           "$path": "dist/src"
         },
         "test": {
-          "$path": "test"
+          "$path": "dist/test"
         }
       }
     },

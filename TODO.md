@@ -7,7 +7,10 @@
 
 
 - [ ] correct wrong syntax
-  - [x] misc stuff ( Float32Array, Array.new ...)
+  - [x] arguments
+  - [x] Array.new
+  - [x] Array.spread
+  - [x] Float32Array.new
   - [x] replace : syntax with . for vec2, vec3, vec4, mat4, plane, line2, poly2, poly3, geom2, geom3, path2, bezier, slice
   - [x] replace Array.length with #Array ( regex replace: ([\w\.]+)\.length\b with: #$1 )
   - [x] recreate js prototype classes with metatables
@@ -18,11 +21,9 @@
   - [ ] json.stringify
   - [ ] string:parseInt(radix)
   - [ ] number:toString(radix)
+  - [ ] Number()
   - [ ] boolean arithmetic
   - [ ] replace 0-based indexing
 
 
-
-- [ ] resolve jest-lua timing out when running tests
-
-
+- [ ] confirm parity with unit tests

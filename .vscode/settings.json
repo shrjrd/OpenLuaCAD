@@ -6,7 +6,8 @@
     "luau-lsp.require.mode": "relativeToFile",
     "luau-lsp.require.directoryAliases": {
         "@Project": "src/",
-        "@DevPackages": "DevPackages/"
+        "@DevPackages": "DevPackages/",
+        "@Packages": "Packages/"
     },
     "luau-lsp.ignoreGlobs": [
         "DevPackages/*",

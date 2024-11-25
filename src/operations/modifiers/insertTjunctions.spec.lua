@@ -58,7 +58,7 @@ test("insertTjunctions: insertTjunctions produces expected polygons", function()
 		poly3.create({ { 1, 1, 1 }, { -1, 1, 1 }, { 0, 0, 1 } }),
 		poly3.create({ { -1, 1, 1 }, { -1, -1, 1 }, { 0, 0, 1 } }),
 	}
-	expect(result3)["not"].toBe(geom3.toPolygons(geometry3))
+	expect(result3).never.toBe(geom3.toPolygons(geometry3))
 	expect(comparePolygonLists(result3, exp)).toBe(true)
 	local result4 = insertTjunctions(geom3.toPolygons(geometry4))
 	exp = {
@@ -76,6 +76,6 @@ test("insertTjunctions: insertTjunctions produces expected polygons", function()
 		poly3.create({ { 0, 1, 1 }, { -1, 1, 1 }, { 0, 0, 1 } }),
 		poly3.create({ { -1, 1, 1 }, { -1, 0, 1 }, { 0, 0, 1 } }),
 	}
-	expect(result4)["not"].toBe(geometry4)
+	expect(result4).never.toBe(geometry4)
 	expect(comparePolygonLists(result4, exp)).toBe(true)
 end)

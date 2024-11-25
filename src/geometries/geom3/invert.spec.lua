@@ -16,7 +16,7 @@ test("invert: Creates a invert on an empty geom3", function()
 	local expected = { polygons = {}, transforms = { 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 } }
 	local geometry = create()
 	local another = invert(geometry)
-	expect(another)["not"].toBe(geometry)
+	expect(another).never.toBe(geometry)
 	expect(another).toEqual(expected)
 end)
 test("invert: Creates a invert of a populated geom3", function()
@@ -27,7 +27,7 @@ test("invert: Creates a invert of a populated geom3", function()
 	}
 	local geometry = fromPoints(points)
 	local another = invert(geometry)
-	expect(another)["not"].toBe(geometry)
+	expect(another).never.toBe(geometry)
 	expect(comparePolygons(
 		another.polygons[
 			1 --[[ ROBLOX adaptation: added 1 to array index ]]

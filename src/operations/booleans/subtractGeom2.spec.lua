@@ -27,7 +27,7 @@ test("subtract: subtract of one or more geom2 objects produces expected geometry
 	}
 	expect(function()
 		return geom2.validate(result1)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#obs).toBe(8)
 	expect(comparePoints(obs, exp)).toBe(true) -- subtract of two non-overlapping objects
 	local geometry2 = center({ relativeTo = { 10, 10, 0 } }, rectangle({ size = { 4, 4 } }))
@@ -45,7 +45,7 @@ test("subtract: subtract of one or more geom2 objects produces expected geometry
 	}
 	expect(function()
 		return geom2.validate(result2)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#obs).toBe(8)
 	expect(comparePoints(obs, exp)).toBe(true) -- subtract of two partially overlapping objects
 	local geometry3 = rectangle({ size = { 18, 18 } })
@@ -54,7 +54,7 @@ test("subtract: subtract of one or more geom2 objects produces expected geometry
 	exp = { { 12, 12 }, { 9, 9 }, { 8, 9 }, { 8, 12 }, { 9, 8 }, { 12, 8 } }
 	expect(function()
 		return geom2.validate(result3)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#obs).toBe(6)
 	expect(comparePoints(obs, exp)).toBe(true) -- subtract of two completely overlapping objects
 	local result4 = subtract(geometry1, geometry3)
@@ -62,7 +62,7 @@ test("subtract: subtract of one or more geom2 objects produces expected geometry
 	exp = {}
 	expect(function()
 		return geom2.validate(result4)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#obs).toBe(0)
 	expect(obs).toEqual(exp)
 end)

@@ -14,7 +14,7 @@ test("poly3. transform() should return a new poly3 with correct values", functio
 	local org1 = fromPoints({ { 0, 0, 0 }, { 1, 0, 0 }, { 1, 1, 0 } })
 	local ret1 = transform(identityMatrix, org1)
 	expect(comparePolygons(ret1, exp1)).toBe(true)
-	expect(org1)["not"].toBe(ret1)
+	expect(org1).never.toBe(ret1)
 	local x = 1
 	local y = 5
 	local z = 7
@@ -23,18 +23,18 @@ test("poly3. transform() should return a new poly3 with correct values", functio
 	local org2 = fromPoints({ { 0, 0, 0 }, { 1, 0, 0 }, { 1, 1, 0 } })
 	local ret2 = transform(translationMatrix, org2)
 	expect(comparePolygons(ret2, exp2)).toBe(true)
-	expect(org2)["not"].toBe(ret2)
+	expect(org2).never.toBe(ret2)
 	local r = 90 * 0.017453292519943295
 	local rotateZMatrix = { math.cos(r), -math.sin(r), 0, 0, math.sin(r), math.cos(r), 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 }
 	local exp3 = { vertices = { { 0, 0, 0 }, { 0, -1, 0 }, { 1, -1, 0 } } }
 	local org3 = fromPoints({ { 0, 0, 0 }, { 1, 0, 0 }, { 1, 1, 0 } })
 	local ret3 = transform(rotateZMatrix, org3)
 	expect(comparePolygons(ret3, exp3)).toBe(true)
-	expect(org3)["not"].toBe(ret3)
+	expect(org3).never.toBe(ret3)
 	local mirrorMatrix = { -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 }
 	local exp4 = { vertices = { { -1, 1, 0 }, { -1, 0, 0 }, { 0, 0, 0 } } }
 	local org4 = fromPoints({ { 0, 0, 0 }, { 1, 0, 0 }, { 1, 1, 0 } })
 	local ret4 = transform(mirrorMatrix, org4)
 	expect(comparePolygons(ret4, exp4)).toBe(true)
-	expect(org4)["not"].toBe(ret4)
+	expect(org4).never.toBe(ret4)
 end)

@@ -1,6 +1,6 @@
 -- ROBLOX NOTE: no upstream
-local Packages = game.ReplicatedStorage.Packages
-local LuauPolyfill = require(Packages.LuauPolyfill)
+
+local LuauPolyfill = require("@Packages/LuauPolyfill")
 local Number = LuauPolyfill.Number
 local JestGlobals = require("@DevPackages/JestGlobals")
 local test, expect = JestGlobals.test, JestGlobals.expect

@@ -28,7 +28,7 @@ test("union of one or more geom2 objects produces expected geometry", function()
 	}
 	expect(function()
 		return geom2.validate(result1)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(obs, exp)).toBe(true) -- union of two non-overlapping objects
 	local geometry2 = center({ relativeTo = { 10, 10, 0 } }, rectangle({ size = { 4, 4 } }))
 	local result2 = union(geometry1, geometry2)
@@ -49,7 +49,7 @@ test("union of one or more geom2 objects produces expected geometry", function()
 	}
 	expect(function()
 		return geom2.validate(result2)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(obs, exp)).toBe(true) -- union of two partially overlapping objects
 	local geometry3 = rectangle({ size = { 18, 18 } })
 	local result3 = union(geometry2, geometry3)
@@ -66,7 +66,7 @@ test("union of one or more geom2 objects produces expected geometry", function()
 	}
 	expect(function()
 		return geom2.validate(result3)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(obs, exp)).toBe(true) -- union of two completely overlapping objects
 	local result4 = union(geometry1, geometry3)
 	obs = geom2.toPoints(result4)
@@ -78,7 +78,7 @@ test("union of one or more geom2 objects produces expected geometry", function()
 	}
 	expect(function()
 		return geom2.validate(result4)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(obs, exp)).toBe(true) -- union of unions of non-overlapping objects (BSP gap from #907)
 	local circ = circle({ radius = 1, segments = 32 })
 	local result5 = union(
@@ -86,9 +86,9 @@ test("union of one or more geom2 objects produces expected geometry", function()
 		union(translate({ 3, 21 }, circ), translate({ 17, 21 }, circ))
 	)
 	obs = geom2.toPoints(result5)
-	t.notThrows:skip(function()
+	--[=[t.notThrows:skip(function()
 		return geom2.validate(result5)
-	end)
+	end)]=]
 	expect(#obs).toBe(112)
 end)
 test("union of geom2 with closing issues #15", function()
@@ -235,7 +235,7 @@ test("union of geom2 with closing issues #15", function()
 	}
 	expect(function()
 		return geom2.validate(obs)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#pts).toBe(20) -- number of sides in union
 	expect(comparePoints(pts, exp)).toBe(true)
 end)

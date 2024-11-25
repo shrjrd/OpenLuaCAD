@@ -1,6 +1,6 @@
 -- ROBLOX NOTE: no upstream
-local Packages = game.ReplicatedStorage.Packages
-local LuauPolyfill = require(Packages.LuauPolyfill)
+
+local LuauPolyfill = require("@Packages/LuauPolyfill")
 local Array = LuauPolyfill.Array
 local Boolean = LuauPolyfill.Boolean
 local Error = LuauPolyfill.Error
@@ -63,8 +63,7 @@ local function populateRelativeToFromBounds(relativeTo, modes, bounds)
 					relativeTo[i] = (
 						bounds[
 							1 --[[ ROBLOX adaptation: added 1 to array index ]]
-						][i]
-						+ bounds[
+						][i] + bounds[
 							2 --[[ ROBLOX adaptation: added 1 to array index ]]
 						][i]
 					) / 2

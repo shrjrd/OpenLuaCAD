@@ -13,9 +13,7 @@ test("appendArc: appending to an empty path produces an error", function()
 	local p1 = fromPoints({}, {})
 	expect(function()
 		return appendArc({ endpoint = { 12, 12 } }, p1)
-	end).toThrowError({
-		message = "the given path must contain one or more points (as the starting point for the arc)",
-	})
+	end).toThrowError("the given path must contain one or more points (as the starting point for the arc)")
 end)
 test("appendArc: appending to a path produces a new path", function()
 	local p1 = fromPoints({}, { { 1, 1 }, { 2, 2 } })

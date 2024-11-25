@@ -1,6 +1,6 @@
 -- ROBLOX NOTE: no upstream
-local Packages = game.ReplicatedStorage.Packages
-local LuauPolyfill = require(Packages.LuauPolyfill)
+
+local LuauPolyfill = require("@Packages/LuauPolyfill")
 local Array = LuauPolyfill.Array
 local flatten = require("../../utils/flatten")
 local retessellate = require("../modifiers/retessellate")

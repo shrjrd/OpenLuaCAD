@@ -1,6 +1,6 @@
 -- ROBLOX NOTE: no upstream
-local Packages = game.ReplicatedStorage.Packages
-local LuauPolyfill = require(Packages.LuauPolyfill)
+
+local LuauPolyfill = require("@Packages/LuauPolyfill")
 local Array = LuauPolyfill.Array
 local JestGlobals = require("@DevPackages/JestGlobals")
 local test, expect = JestGlobals.test, JestGlobals.expect
@@ -20,7 +20,7 @@ test("offset: offsetting a straight line produces expected geometry", function()
 	local offsetPoints = path2.toPoints(offsetLinePath2)
 	expect(function()
 		return path2.validate(offsetLinePath2)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#offsetPoints).toBe(2)
 	local boundingBox = measureBoundingBox(offsetLinePath2)
 	expect(comparePoints(boundingBox, { { 2, 0, 0 }, { 2, 10, 0 } })).toBe(true) -- offset it by -2.
@@ -28,7 +28,7 @@ test("offset: offsetting a straight line produces expected geometry", function()
 	offsetPoints = path2.toPoints(offsetLinePath2)
 	expect(function()
 		return path2.validate(offsetLinePath2)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#offsetPoints).toBe(2)
 	boundingBox = measureBoundingBox(offsetLinePath2)
 	expect(comparePoints(boundingBox, { { -2, 0, 0 }, { -2, 10, 0 } })).toBe(true) -- reverse the points, offset it by 2.
@@ -38,7 +38,7 @@ test("offset: offsetting a straight line produces expected geometry", function()
 	offsetPoints = path2.toPoints(offsetLinePath2)
 	expect(function()
 		return path2.validate(offsetLinePath2)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#offsetPoints).toBe(2)
 	boundingBox = measureBoundingBox(offsetLinePath2)
 	expect(comparePoints(boundingBox, { { -2, 0, 0 }, { -2, 10, 0 } })).toBe(true)
@@ -50,7 +50,7 @@ test("offset: offsetting a bent line produces expected geometry", function()
 	local offsetPoints = path2.toPoints(offsetLinePath2)
 	expect(function()
 		return path2.validate(offsetLinePath2)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#offsetPoints).toBe(5)
 	local boundingBox = measureBoundingBox(offsetLinePath2)
 	expect(comparePoints(boundingBox, { { 2, 0, 0 }, { 10, 8, 0 } })).toBe(true) -- offset it by -2.
@@ -58,7 +58,7 @@ test("offset: offsetting a bent line produces expected geometry", function()
 	offsetPoints = path2.toPoints(offsetLinePath2)
 	expect(function()
 		return path2.validate(offsetLinePath2)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#offsetPoints).toBe(5)
 	boundingBox = measureBoundingBox(offsetLinePath2)
 	expect(comparePoints(boundingBox, { { -2, 0, 0 }, { 10, 12, 0 } })).toBe(true)
@@ -70,7 +70,7 @@ test("offset: offsetting a 2 segment straight line produces expected geometry", 
 	local offsetPoints = path2.toPoints(offsetLinePath2)
 	expect(function()
 		return path2.validate(offsetLinePath2)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#offsetPoints).toBe(3)
 	local boundingBox = measureBoundingBox(offsetLinePath2)
 	expect(comparePoints(boundingBox, { { 2, 0, 0 }, { 2, 10, 0 } })).toBe(true)
@@ -84,7 +84,7 @@ test("offset (corners: chamfer): offset of a path2 produces expected offset path
 	local exp = {}
 	expect(function()
 		return path2.validate(obs)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(pts, exp)).toBe(true) -- expand +
 	obs = offset({ delta = 1, corners = "chamfer" }, openline)
 	pts = path2.toPoints(obs)
@@ -96,7 +96,7 @@ test("offset (corners: chamfer): offset of a path2 produces expected offset path
 	}
 	expect(function()
 		return path2.validate(obs)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(pts, exp)).toBe(true)
 	obs = offset({ delta = 1, corners = "chamfer" }, closeline)
 	pts = path2.toPoints(obs)
@@ -110,7 +110,7 @@ test("offset (corners: chamfer): offset of a path2 produces expected offset path
 	}
 	expect(function()
 		return path2.validate(obs)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(pts, exp)).toBe(true) -- contract -
 	obs = offset({ delta = -1, corners = "chamfer" }, openline)
 	pts = path2.toPoints(obs)
@@ -121,14 +121,14 @@ test("offset (corners: chamfer): offset of a path2 produces expected offset path
 	}
 	expect(function()
 		return path2.validate(obs)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(pts, exp)).toBe(true)
 	obs = offset({ delta = -1, corners = "chamfer" }, closeline)
 	pts = path2.toPoints(obs)
 	exp = { { 1, 1 }, { 2.5857864376269046, 1 }, { 0.9999999999999996, 2.585786437626905 } }
 	expect(function()
 		return path2.validate(obs)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(pts, exp)).toBe(true)
 end)
 test("offset (corners: edge): offset of a path2 produces expected offset path2", function()
@@ -164,7 +164,7 @@ test("offset (corners: edge): offset of a path2 produces expected offset path2",
 	}
 	expect(function()
 		return path2.validate(obs)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(pts, exp)).toBe(true)
 	obs = offset({ delta = 1, corners = "edge" }, closeline)
 	pts = path2.toPoints(obs)
@@ -183,7 +183,7 @@ test("offset (corners: edge): offset of a path2 produces expected offset path2",
 	}
 	expect(function()
 		return path2.validate(obs)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(pts, exp)).toBe(true)
 	obs = offset({ delta = -0.5, corners = "edge" }, openline)
 	pts = path2.toPoints(obs)
@@ -199,7 +199,7 @@ test("offset (corners: edge): offset of a path2 produces expected offset path2",
 	}
 	expect(function()
 		return path2.validate(obs)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(pts, exp)).toBe(true)
 	obs = offset({ delta = -0.5, corners = "edge" }, closeline)
 	pts = path2.toPoints(obs)
@@ -215,7 +215,7 @@ test("offset (corners: edge): offset of a path2 produces expected offset path2",
 	}
 	expect(function()
 		return path2.validate(obs)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(pts, exp)).toBe(true)
 end)
 test("offset (corners: round): offset of a path2 produces expected offset path2", function()
@@ -267,7 +267,7 @@ test("offset (corners: round): offset of a path2 produces expected offset path2"
 	}
 	expect(function()
 		return path2.validate(obs)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(pts, exp)).toBe(true)
 	obs = offset({ delta = 1, corners = "round", segments = 16 }, closeline)
 	pts = path2.toPoints(obs)
@@ -307,7 +307,7 @@ test("offset (corners: round): offset of a path2 produces expected offset path2"
 	}
 	expect(function()
 		return path2.validate(obs)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(pts, exp)).toBe(true)
 end)
 test("offset (corners: round): offset of a CW path2 produces expected offset path2", function()
@@ -363,7 +363,7 @@ test("offset (corners: round): offset of a CW path2 produces expected offset pat
 	}
 	expect(function()
 		return path2.validate(obs)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(pts, exp)).toBe(true)
 end)
 test("offset (options): offsetting of a simple geom2 produces expected offset geom2", function()
@@ -383,7 +383,7 @@ test("offset (options): offsetting of a simple geom2 produces expected offset ge
 	local exp = {}
 	expect(function()
 		return geom2.validate(obs)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(pts, exp)).toBe(true) -- expand +
 	obs = offset({ delta = 1, corners = "round" }, geometry)
 	pts = geom2.toPoints(obs)
@@ -405,7 +405,7 @@ test("offset (options): offsetting of a simple geom2 produces expected offset ge
 	}
 	expect(function()
 		return geom2.validate(obs)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(pts, exp)).toBe(true) -- contract -
 	obs = offset({ delta = -0.5, corners = "round" }, geometry)
 	pts = geom2.toPoints(obs)
@@ -423,7 +423,7 @@ test("offset (options): offsetting of a simple geom2 produces expected offset ge
 	}
 	expect(function()
 		return geom2.validate(obs)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(pts, exp)).toBe(true) -- segments 1 - sharp points at corner
 	obs = offset({ delta = 1, corners = "edge" }, geometry)
 	pts = geom2.toPoints(obs)
@@ -442,7 +442,7 @@ test("offset (options): offsetting of a simple geom2 produces expected offset ge
 	}
 	expect(function()
 		return geom2.validate(obs)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(pts, exp)).toBe(true) -- segments 16 - rounded corners
 	obs = offset({ delta = -0.5, corners = "round", segments = 16 }, geometry)
 	pts = geom2.toPoints(obs)
@@ -466,7 +466,7 @@ test("offset (options): offsetting of a simple geom2 produces expected offset ge
 	}
 	expect(function()
 		return geom2.validate(obs)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(pts, exp)).toBe(true)
 end)
 test("offset (options): offsetting of a complex geom2 produces expected offset geom2", function()
@@ -518,7 +518,7 @@ test("offset (options): offsetting of a complex geom2 produces expected offset g
 	}
 	expect(function()
 		return geom2.validate(obs)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#pts).toBe(20)
 	expect(comparePoints(pts, exp)).toBe(true)
 end)
@@ -563,7 +563,7 @@ test("offset (options): offsetting of round geom2 produces expected offset geom2
 	}
 	expect(function()
 		return geom2.validate(obs)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#pts).toBe(16)
 	expect(comparePoints(pts, exp)).toBe(true)
 end)

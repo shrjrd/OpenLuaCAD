@@ -1,6 +1,6 @@
 -- ROBLOX NOTE: no upstream
-local Packages = game.ReplicatedStorage.Packages
-local LuauPolyfill = require(Packages.LuauPolyfill)
+
+local LuauPolyfill = require("@Packages/LuauPolyfill")
 local Array = LuauPolyfill.Array
 local Boolean = LuauPolyfill.Boolean
 local Error = LuauPolyfill.Error
@@ -246,19 +246,19 @@ local function geodesicSphere(options)
 		do
 			local g = geodesicSubDivide({
 				ci[
-					tostring(ti[i][
+					ti[i][
 						1 --[[ ROBLOX adaptation: added 1 to array index ]]
-					])
+					]
 				],
 				ci[
-					tostring(ti[i][
+					ti[i][
 						2 --[[ ROBLOX adaptation: added 1 to array index ]]
-					])
+					]
 				],
 				ci[
-					tostring(ti[i][
+					ti[i][
 						3 --[[ ROBLOX adaptation: added 1 to array index ]]
-					])
+					]
 				],
 			}, frequency, offset)
 			points = Array.concat(points, g.points) --[[ ROBLOX CHECK: check if 'points' is an Array ]]

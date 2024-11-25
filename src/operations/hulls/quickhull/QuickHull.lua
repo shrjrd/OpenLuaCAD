@@ -1,7 +1,7 @@
 -- ROBLOX NOTE: no upstream
-local Packages = game.ReplicatedStorage.Packages
+
 local Number_EPSILON = 2.220446049250313e-16
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@Packages/LuauPolyfill")
 local Error = LuauPolyfill.Error
 local Array = LuauPolyfill.Array
 local Boolean = LuauPolyfill.Boolean

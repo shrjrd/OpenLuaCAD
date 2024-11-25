@@ -1,7 +1,7 @@
 -- ROBLOX NOTE: no upstream
-local Packages = game.ReplicatedStorage.Packages
+
 local Number_MAX_VALUE = 1.7976931348623157e+308
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@Packages/LuauPolyfill")
 local Array = LuauPolyfill.Array
 local Error = LuauPolyfill.Error
 local flatten = require("../utils/flatten")

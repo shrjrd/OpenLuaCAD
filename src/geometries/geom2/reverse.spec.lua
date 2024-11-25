@@ -20,7 +20,7 @@ test("reverse: Reverses a populated geom2", function()
 	}
 	local geometry = fromPoints(points)
 	local another = reverse(geometry)
-	expect(geometry)["not"].toBe(another)
+	expect(geometry).never.toBe(another)
 	expect(comparePoints(
 		another.sides[
 			1 --[[ ROBLOX adaptation: added 1 to array index ]]

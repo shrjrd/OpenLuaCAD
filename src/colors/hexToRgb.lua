@@ -1,6 +1,6 @@
 -- ROBLOX NOTE: no upstream
-local Packages = game.ReplicatedStorage.Packages
-local LuauPolyfill = require(Packages.LuauPolyfill)
+
+local LuauPolyfill = require("@Packages/LuauPolyfill")
 local Error = LuauPolyfill.Error
 --[[*
  * Converts CSS color notations (string of hex values) to RGB values.
@@ -21,14 +21,18 @@ local function hexToRgb(notation)
 	then
 		error(Error.new("the given notation must contain 3 or more hex values"))
 	end
-	local r = tonumber(notation:sub(0, 2), 16) / 255
-	local g = tonumber(notation:sub(2, 4), 16) / 255
-	local b = tonumber(notation:sub(4, 6), 16) / 255
+	local r = tonumber(notation:sub(0, 2), 16)
+	r = r / 255
+	local g = tonumber(notation:sub(2, 4), 16)
+	g = g / 255
+	local b = tonumber(notation:sub(4, 6), 16)
+	b = b / 255
 	if
 		#notation
 		>= 8 --[[ ROBLOX CHECK: operator '>=' works only if either both arguments are strings or both are a number ]]
 	then
-		local a = tonumber(notation:sub(6, 8), 16) / 255
+		local a = tonumber(notation:sub(6, 8), 16)
+		a = a / 255
 		return { r, g, b, a }
 	end
 	return { r, g, b }

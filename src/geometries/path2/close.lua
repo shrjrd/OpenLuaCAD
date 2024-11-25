@@ -1,6 +1,6 @@
 -- ROBLOX NOTE: no upstream
-local Packages = game.ReplicatedStorage.Packages
-local LuauPolyfill = require(Packages.LuauPolyfill)
+
+local LuauPolyfill = require("@Packages/LuauPolyfill")
 local Boolean = LuauPolyfill.Boolean
 local EPS = require("../../maths/constants").EPS
 local vec2 = require("../../maths/vec2")

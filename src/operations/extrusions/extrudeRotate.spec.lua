@@ -20,7 +20,7 @@ test("extrudeRotate: (defaults) extruding of a geom2 produces an expected geom3"
 	local pts = geom3.toPoints(geometry3)
 	expect(function()
 		return geom3.validate(geometry3)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#pts).toBe(96)
 end)
 test("extrudeRotate: (angle) extruding of a geom2 produces an expected geom3", function()
@@ -67,20 +67,20 @@ test("extrudeRotate: (angle) extruding of a geom2 produces an expected geom3", f
 	}
 	expect(function()
 		return geom3.validate(geometry3)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#pts).toBe(12)
 	expect(comparePolygonsAsPoints(pts, exp)).toBe(true)
 	geometry3 = extrudeRotate({ segments = 4, angle = -250 * 0.017453292519943295 }, geometry2)
 	pts = geom3.toPoints(geometry3)
 	expect(function()
 		return geom3.validate(geometry3)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#pts).toBe(28)
 	geometry3 = extrudeRotate({ segments = 4, angle = 250 * 0.017453292519943295 }, geometry2)
 	pts = geom3.toPoints(geometry3)
 	expect(function()
 		return geom3.validate(geometry3)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#pts).toBe(28)
 end)
 test("extrudeRotate: (startAngle) extruding of a geom2 produces an expected geom3", function()
@@ -94,7 +94,7 @@ test("extrudeRotate: (startAngle) extruding of a geom2 produces an expected geom
 	}
 	expect(function()
 		return geom3.validate(geometry3)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#pts).toBe(40)
 	expect(comparePoints(
 		pts[
@@ -111,7 +111,7 @@ test("extrudeRotate: (startAngle) extruding of a geom2 produces an expected geom
 	}
 	expect(function()
 		return geom3.validate(geometry3)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#pts).toBe(40)
 	expect(comparePoints(
 		pts[
@@ -126,20 +126,20 @@ test("extrudeRotate: (segments) extruding of a geom2 produces an expected geom3"
 	local pts = geom3.toPoints(geometry3)
 	expect(function()
 		return geom3.validate(geometry3)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#pts).toBe(32)
 	geometry3 = extrudeRotate({ segments = 64 }, geometry2)
 	pts = geom3.toPoints(geometry3)
 	expect(function()
 		return geom3.validate(geometry3)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#pts).toBe(512) -- test overlapping edges
 	geometry2 = geom2.fromPoints({ { 0, 0 }, { 2, 1 }, { 1, 2 }, { 1, 3 }, { 3, 4 }, { 0, 5 } })
 	geometry3 = extrudeRotate({ segments = 8 }, geometry2)
 	pts = geom3.toPoints(geometry3)
 	expect(function()
 		return geom3.validate(geometry3)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#pts).toBe(64) -- test overlapping edges that produce hollow shape
 	geometry2 = geom2.fromPoints({
 		{ 30, 0 },
@@ -156,7 +156,7 @@ test("extrudeRotate: (segments) extruding of a geom2 produces an expected geom3"
 	pts = geom3.toPoints(geometry3)
 	expect(function()
 		return geom3.validate(geometry3)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#pts).toBe(80)
 end)
 test("extrudeRotate: (overlap +/-) extruding of a geom2 produces an expected geom3", function()
@@ -176,7 +176,7 @@ test("extrudeRotate: (overlap +/-) extruding of a geom2 produces an expected geo
 	}
 	expect(function()
 		return geom3.validate(obs)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#pts).toBe(8)
 	expect(comparePolygonsAsPoints(pts, exp)).toBe(true) -- overlap of Y axis; larger number of - points
 	geometry = geom2.fromPoints({ { -1, 8 }, { -2, 4 }, { -1, -8 }, { 7, -8 }, { 7, 8 } })
@@ -220,7 +220,7 @@ test("extrudeRotate: (overlap +/-) extruding of a geom2 produces an expected geo
 	}
 	expect(function()
 		return geom3.validate(obs)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#pts).toBe(18)
 	expect(comparePolygonsAsPoints(pts, exp)).toBe(true)
 end) -- TEST HOLES

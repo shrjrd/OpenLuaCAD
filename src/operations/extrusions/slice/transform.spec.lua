@@ -11,7 +11,7 @@ test("slice. transform() should return a new slice with correct values", functio
 	local identityMatrix = { 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 }
 	local org1 = fromPoints({ { 0, 0 }, { 1, 0 }, { 1, 1 } })
 	local ret1 = transform(identityMatrix, org1)
-	expect(org1)["not"].toBe(ret1)
+	expect(org1).never.toBe(ret1)
 	local edges1 = toEdges(ret1)
 	local exp1 = { { { 1, 1, 0 }, { 0, 0, 0 } }, { { 0, 0, 0 }, { 1, 0, 0 } }, { { 1, 0, 0 }, { 1, 1, 0 } } }
 	expect(edges1).toEqual(exp1)
@@ -21,7 +21,7 @@ test("slice. transform() should return a new slice with correct values", functio
 	local translationMatrix = { 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, x, y, z, 1 }
 	local org2 = fromPoints({ { 0, 0 }, { 1, 0 }, { 1, 1 } })
 	local ret2 = transform(translationMatrix, org2)
-	expect(org2)["not"].toBe(ret2)
+	expect(org2).never.toBe(ret2)
 	local edges2 = toEdges(ret2)
 	local exp2 = { { { 2, 6, 7 }, { 1, 5, 7 } }, { { 1, 5, 7 }, { 2, 5, 7 } }, { { 2, 5, 7 }, { 2, 6, 7 } } }
 	expect(edges2).toEqual(exp2)
@@ -29,7 +29,7 @@ test("slice. transform() should return a new slice with correct values", functio
 	local rotateZMatrix = { math.cos(r), -math.sin(r), 0, 0, math.sin(r), math.cos(r), 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 }
 	local org3 = fromPoints({ { 0, 0 }, { 1, 0 }, { 1, 1 } })
 	local ret3 = transform(rotateZMatrix, org3)
-	expect(org3)["not"].toBe(ret3)
+	expect(org3).never.toBe(ret3)
 	local edges3 = toEdges(ret3)
 	local exp3 = {
 		{ { 1, -0.9999999999999999, 0 }, { 0, 0, 0 } },

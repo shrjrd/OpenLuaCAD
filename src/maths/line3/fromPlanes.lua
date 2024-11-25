@@ -1,6 +1,6 @@
 -- ROBLOX NOTE: no upstream
-local Packages = game.ReplicatedStorage.Packages
-local LuauPolyfill = require(Packages.LuauPolyfill)
+
+local LuauPolyfill = require("@Packages/LuauPolyfill")
 local Error = LuauPolyfill.Error
 local vec3 = require("../vec3")
 local solve2Linear = require("../utils").solve2Linear

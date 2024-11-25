@@ -26,12 +26,12 @@ test("project (defaults)", function()
 		return geom2.validate(results[
 			1 --[[ ROBLOX adaptation: added 1 to array index ]]
 		])
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(function()
 		return geom2.validate(results[
 			2 --[[ ROBLOX adaptation: added 1 to array index ]]
 		])
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(results[
 		3 --[[ ROBLOX adaptation: added 1 to array index ]]
 	]).toBe(geometry2)
@@ -44,7 +44,7 @@ test("project (defaults)", function()
 	local result = project({}, torus({ outerSegments = 4 }))
 	expect(function()
 		return geom2.validate(result)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	local pts = geom2.toPoints(result)
 	local exp = {
 		{ 0, -5.000013333333333 },
@@ -62,7 +62,7 @@ test("project (X and Y axis)", function()
 	local result = project({ axis = { 1, 0, 0 }, origin = { 1, 0, 0 } }, torus({ outerSegments = 4 }))
 	expect(function()
 		return geom2.validate(result)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	local pts = geom2.toPoints(result)
 	local exp = {
 		{ -0.19511333333333336, -4.98078 },
@@ -104,7 +104,7 @@ test("project (X and Y axis)", function()
 	result = project({ axis = { 0, 1, 0 }, origin = { 0, -1, 0 } }, torus({ outerSegments = 4 }))
 	expect(function()
 		return geom2.validate(result)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	pts = geom2.toPoints(result)
 	exp = {
 		{ 4.98078, -0.19511333333333336 },

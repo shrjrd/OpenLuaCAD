@@ -15,13 +15,10 @@
   - [x] replace Array.length with #Array ( regex replace: ([\w\.]+)\.length\b with: #$1 )
   - [x] recreate js prototype classes with metatables
   - [x] add jest-lua requires to tests
-  - [ ] replace left over ava syntax
-  - [ ] replace incorrect jest js syntax with jest lua's
-  - [ ] parseInt
-  - [ ] json.stringify
-  - [ ] string:parseInt(radix)
-  - [ ] number:toString(radix)
-  - [ ] Number()
+  - [x] replace left over ava syntax
+  - [x] replace incorrect jest js syntax with jest lua's
+  - [x] replace json.stringify with lua-json.encode
+  - [x] number:toString(radix)
   - [ ] boolean arithmetic
   - [ ] replace 0-based indexing
 

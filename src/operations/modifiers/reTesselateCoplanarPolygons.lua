@@ -1,6 +1,6 @@
 -- ROBLOX NOTE: no upstream
-local Packages = game.ReplicatedStorage.Packages
-local LuauPolyfill = require(Packages.LuauPolyfill)
+
+local LuauPolyfill = require("@Packages/LuauPolyfill")
 local Array = LuauPolyfill.Array
 local Boolean = LuauPolyfill.Boolean
 local Map = LuauPolyfill.Map
@@ -263,7 +263,7 @@ local function reTesselateCoplanarPolygons(sourcepolygons)
 				nextycoordinate = nil
 			else
 				-- yindex < #ycoordinates-1
-				nextycoordinate = Number(ycoordinates[(yindex + 1)])
+				nextycoordinate = tonumber(ycoordinates[(yindex + 1)]) --Number()
 				local middleycoordinate = 0.5 * (ycoordinate + nextycoordinate) -- update activepolygons by adding any polygons that start here:
 				local startingpolygonindexes = topy2polygonindexes:get(ycoordinate)
 				for polygonindexKey in startingpolygonindexes do

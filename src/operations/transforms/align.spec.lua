@@ -18,7 +18,7 @@ test("align: single object returns geometry unchanged if all axes are none", fun
 	local expectedBounds = { { 8, 8, 8 }, { 12, 12, 12 } }
 	expect(function()
 		return geom3.validate(aligned)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(bounds, expectedBounds)).toBe(true)
 end)
 test("align: single objects returns geometry aligned, different modes on each axis", function()
@@ -28,7 +28,7 @@ test("align: single objects returns geometry aligned, different modes on each ax
 	local expectedBounds = { { -2, 0, -4 }, { 2, 4, 0 } }
 	expect(function()
 		return geom3.validate(aligned)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(bounds, expectedBounds)).toBe(true)
 end)
 test("align: unfilled modes and relativeTo arrays return results with expected values", function()
@@ -38,7 +38,7 @@ test("align: unfilled modes and relativeTo arrays return results with expected v
 	local expectedBounds = { { -2, 8, 8 }, { 2, 12, 12 } }
 	expect(function()
 		return geom3.validate(aligned)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(bounds, expectedBounds)).toBe(true)
 end)
 test("align: multiple objects grouped returns geometry aligned, different modes on each axis", function()
@@ -53,12 +53,12 @@ test("align: multiple objects grouped returns geometry aligned, different modes 
 		return geom3.validate(aligned[
 			1 --[[ ROBLOX adaptation: added 1 to array index ]]
 		])
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(function()
 		return geom3.validate(aligned[
 			2 --[[ ROBLOX adaptation: added 1 to array index ]]
 		])
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(bounds, expectedBounds)).toBe(true)
 end)
 test("align: multiple objects ungrouped returns geometry aligned, different modes on each axis", function()
@@ -73,12 +73,12 @@ test("align: multiple objects ungrouped returns geometry aligned, different mode
 		return geom3.validate(aligned[
 			1 --[[ ROBLOX adaptation: added 1 to array index ]]
 		])
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(function()
 		return geom3.validate(aligned[
 			2 --[[ ROBLOX adaptation: added 1 to array index ]]
 		])
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(bounds, expectedBounds)).toBe(true)
 end)
 test("align: multiple objects grouped, relativeTo is nulls, returns geometry unchanged", function()
@@ -91,12 +91,12 @@ test("align: multiple objects grouped, relativeTo is nulls, returns geometry unc
 		return geom3.validate(aligned[
 			1 --[[ ROBLOX adaptation: added 1 to array index ]]
 		])
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(function()
 		return geom3.validate(aligned[
 			2 --[[ ROBLOX adaptation: added 1 to array index ]]
 		])
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(bounds, expectedBounds)).toBe(true)
 end)
 test("align: multiple objects ungrouped, relativeTo is nulls, returns geometry aligned to group bounds", function()
@@ -112,12 +112,12 @@ test("align: multiple objects ungrouped, relativeTo is nulls, returns geometry a
 		return geom3.validate(aligned[
 			1 --[[ ROBLOX adaptation: added 1 to array index ]]
 		])
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(function()
 		return geom3.validate(aligned[
 			2 --[[ ROBLOX adaptation: added 1 to array index ]]
 		])
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(bounds, expectedBounds)).toBe(true)
 end)
 test("align: throws errors on bad options", function()

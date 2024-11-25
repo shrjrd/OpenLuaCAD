@@ -39,7 +39,7 @@ test("line3: transform() called with three parameters should update a line3 with
 		],
 		{ 0, 0, 1 }
 	)).toBe(true)
-	expect(line1)["not"].toBe(obs1)
+	expect(line1).never.toBe(obs1)
 	expect(ret1).toBe(obs1)
 	ret1 = transform(obs1, line2, identityMatrix)
 	expect(compareVectors(

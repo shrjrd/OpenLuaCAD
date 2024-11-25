@@ -12,9 +12,7 @@ test("appendbezier. appending to an empty path produces an error", function()
 	local p1 = fromPoints({}, {})
 	expect(function()
 		return appendBezier({ controlPoints = { { 12, 12 } } }, p1)
-	end).toThrowError({
-		message = "the given path must contain one or more points (as the starting point for the bezier curve)",
-	})
+	end).toThrowError("the given path must contain one or more points (as the starting point for the bezier curve)")
 end)
 test("appendbezier. appending to a path produces a new path", function()
 	local p1 = fromPoints({}, { { 10, -20 } })

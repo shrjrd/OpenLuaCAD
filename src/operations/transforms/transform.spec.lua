@@ -22,7 +22,7 @@ test("transform: transforming of a path2 produces expected changes to points", f
 	local exp = { { 2, 2 }, { 3, 2 } }
 	expect(function()
 		return path2.validate(geometry)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(obs, exp)).toBe(true)
 end)
 test("transform: transforming of a geom2 produces expected changes to sides", function()
@@ -33,7 +33,7 @@ test("transform: transforming of a geom2 produces expected changes to sides", fu
 	local exp = { { 0, 0 }, { 5, 0 }, { 0, 5 } }
 	expect(function()
 		return geom2.validate(geometry)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(obs, exp)).toBe(true)
 end)
 test("transform: transforming of a geom3 produces expected changes to polygons", function()
@@ -59,7 +59,7 @@ test("transform: transforming of a geom3 produces expected changes to polygons",
 	}
 	expect(function()
 		return geom3.validate(geometry)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePolygonsAsPoints(obs, exp)).toBe(true)
 end)
 test("transform: transforming of multiple objects produces expected changes", function()
@@ -79,7 +79,7 @@ test("transform: transforming of multiple objects produces expected changes", fu
 		return path2.validate(transformed[
 			2 --[[ ROBLOX adaptation: added 1 to array index ]]
 		])
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(obs, exp)).toBe(true)
 	obs = geom2.toPoints(transformed[
 		3 --[[ ROBLOX adaptation: added 1 to array index ]]
@@ -89,6 +89,6 @@ test("transform: transforming of multiple objects produces expected changes", fu
 		return geom2.validate(transformed[
 			3 --[[ ROBLOX adaptation: added 1 to array index ]]
 		])
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(obs, exp)).toBe(true)
 end)

@@ -24,13 +24,13 @@ test("center: centering of a path2 produces expected changes to points", functio
 	local exp = { { 3, 0 }, { -2, 3 }, { -3, 0 } }
 	expect(function()
 		return path2.validate(centered)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(pts, exp)).toBe(true)
 	centered = centerX(geometry)
 	pts = path2.toPoints(centered)
 	expect(function()
 		return path2.validate(centered)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(pts, exp)).toBe(true)
 end)
 test("center: centering of a geom2 produces expected changes to points", function()
@@ -40,13 +40,13 @@ test("center: centering of a geom2 produces expected changes to points", functio
 	local exp = { { 0, -5 }, { 10, -5 }, { 0, 5 } }
 	expect(function()
 		return geom2.validate(centered)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(pts, exp)).toBe(true)
 	centered = centerY(geometry)
 	pts = geom2.toPoints(centered)
 	expect(function()
 		return geom2.validate(centered)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(pts, exp)).toBe(true)
 end)
 test("center: centering of a geom3 produces expected changes to polygons", function()
@@ -71,13 +71,13 @@ test("center: centering of a geom3 produces expected changes to polygons", funct
 	}
 	expect(function()
 		return geom3.validate(centered)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePolygonsAsPoints(pts, exp)).toBe(true)
 	centered = centerX(geometry)
 	pts = geom3.toPoints(centered)
 	expect(function()
 		return geom3.validate(centered)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePolygonsAsPoints(pts, exp)).toBe(true) -- center about Y
 	centered = center({ axes = { false, true, false } }, geometry)
 	pts = geom3.toPoints(centered)
@@ -91,13 +91,13 @@ test("center: centering of a geom3 produces expected changes to polygons", funct
 	}
 	expect(function()
 		return geom3.validate(centered)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePolygonsAsPoints(pts, exp)).toBe(true)
 	centered = centerY(geometry)
 	pts = geom3.toPoints(centered)
 	expect(function()
 		return geom3.validate(centered)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePolygonsAsPoints(pts, exp)).toBe(true) -- center about Z
 	centered = center({ axes = { false, false, true } }, geometry)
 	pts = geom3.toPoints(centered)
@@ -111,13 +111,13 @@ test("center: centering of a geom3 produces expected changes to polygons", funct
 	}
 	expect(function()
 		return geom3.validate(centered)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePolygonsAsPoints(pts, exp)).toBe(true)
 	centered = centerZ(geometry)
 	pts = geom3.toPoints(centered)
 	expect(function()
 		return geom3.validate(centered)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePolygonsAsPoints(pts, exp)).toBe(true)
 end)
 test("center: centering of multiple objects produces expected changes", function()
@@ -136,7 +136,7 @@ test("center: centering of multiple objects produces expected changes", function
 		return path2.validate(centered[
 			2 --[[ ROBLOX adaptation: added 1 to array index ]]
 		])
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(pts1, exp1)).toBe(true)
 	local pts2 = geom2.toPoints(centered[
 		3 --[[ ROBLOX adaptation: added 1 to array index ]]
@@ -146,6 +146,6 @@ test("center: centering of multiple objects produces expected changes", function
 		return geom2.validate(centered[
 			3 --[[ ROBLOX adaptation: added 1 to array index ]]
 		])
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(pts2, exp2)).toBe(true)
 end)

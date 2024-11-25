@@ -24,7 +24,7 @@ test("expand: edge-expanding a straight line produces rectangle", function()
 	local expandedPoints = geom2.toPoints(expandedPathGeom2)
 	expect(function()
 		return geom2.validate(expandedPathGeom2)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(area(expandedPoints)).toBe(40)
 	expect(comparePoints(measureBoundingBox(expandedPathGeom2), { { -2, 0, 0 }, { 2, 10, 0 } })).toBe(true)
 end)
@@ -35,7 +35,7 @@ test("expand: edge-expanding a bent line produces expected geometry", function()
 	local expandedPoints = geom2.toPoints(expandedPathGeom2)
 	expect(function()
 		return geom2.validate(expandedPathGeom2)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(area(expandedPoints)).toBe(60)
 	local boundingBox = measureBoundingBox(expandedPathGeom2)
 	expect(comparePoints(boundingBox, { { -5, 0, 0 }, { 2, 12, 0 } })).toBe(true)
@@ -47,7 +47,7 @@ test("expand: edge-expanding a bent line, reversed points, produces expected geo
 	local expandedPoints = geom2.toPoints(expandedPathGeom2)
 	expect(function()
 		return geom2.validate(expandedPathGeom2)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(area(expandedPoints)).toBe(60)
 	local boundingBox = measureBoundingBox(expandedPathGeom2)
 	expect(comparePoints(boundingBox, { { -5, 0, 0 }, { 2, 12, 0 } })).toBe(true)
@@ -60,7 +60,7 @@ test("expand: round-expanding a bent line produces expected geometry", function(
 	local expandedPoints = geom2.toPoints(expandedPathGeom2)
 	expect(function()
 		return geom2.validate(expandedPathGeom2)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	local expectedArea = 56 + TAU * delta * 1.25 -- shape will have 1 and 1/4 circles
 	nearlyEqual(area(expandedPoints), expectedArea, 0.01, "Measured area should be pretty close")
 	local boundingBox = measureBoundingBox(expandedPathGeom2)
@@ -74,7 +74,7 @@ test("expand: chamfer-expanding a bent line produces expected geometry", functio
 	local expandedPoints = geom2.toPoints(expandedPathGeom2)
 	expect(function()
 		return geom2.validate(expandedPathGeom2)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(area(expandedPoints)).toBe(58)
 	local boundingBox = measureBoundingBox(expandedPathGeom2)
 	expect(comparePoints(boundingBox, { { -5, 0, 0 }, { 2, 12, 0 } })).toBe(true)
@@ -99,7 +99,7 @@ test("expand: expanding of a geom2 produces expected changes to points", functio
 	}
 	expect(function()
 		return geom2.validate(obs)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#pts).toBe(12)
 	expect(comparePoints(pts, exp)).toBe(true)
 end)
@@ -121,9 +121,9 @@ test("expand: expanding of a geom3 produces expected changes to polygons", funct
 		{ 16.414213562373096, -6.414213562373095, 15 },
 		{ 16, -6.414213562373095, 16 },
 	}
-	t.notThrows:skip(function()
+	--[=[t.notThrows:skip(function()
 		return geom3.validate(obs)
-	end)
+	end)]=]
 	expect(#pts).toBe(62)
 	expect(comparePoints(
 		pts[
@@ -140,9 +140,9 @@ test("expand: expanding of a geom3 produces expected changes to polygons", funct
 	local geometry2 = sphere({ radius = 5, segments = 8 })
 	local obs2 = expand({ delta = 5 }, geometry2)
 	local pts2 = geom3.toPoints(obs2)
-	t.notThrows:skip(function()
+	--[=[t.notThrows:skip(function()
 		return geom3.validate(obs2)
-	end)
+	end)]=]
 	expect(#pts2).toBe(864)
 end)
 test("expand (options): offsetting of a complex geom2 produces expected offset geom2", function()
@@ -194,7 +194,7 @@ test("expand (options): offsetting of a complex geom2 produces expected offset g
 	}
 	expect(function()
 		return geom2.validate(obs)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#pts).toBe(20)
 	expect(comparePoints(pts, exp)).toBe(true)
 end)

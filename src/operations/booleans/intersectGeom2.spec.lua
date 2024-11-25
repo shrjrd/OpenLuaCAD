@@ -27,7 +27,7 @@ test("intersect: intersect of one or more geom2 objects produces expected geomet
 	}
 	expect(function()
 		return geom2.validate(result1)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#obs).toBe(8)
 	expect(comparePoints(obs, exp)).toBe(true) -- intersect of two non-overlapping objects
 	local geometry2 = center({ relativeTo = { 10, 10, 0 } }, rectangle({ size = { 4, 4 } }))
@@ -35,7 +35,7 @@ test("intersect: intersect of one or more geom2 objects produces expected geomet
 	obs = geom2.toPoints(result2)
 	expect(function()
 		return geom2.validate(result2)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#obs).toBe(0) -- intersect of two partially overlapping objects
 	local geometry3 = rectangle({ size = { 18, 18 } })
 	local result3 = intersect(geometry2, geometry3)
@@ -43,7 +43,7 @@ test("intersect: intersect of one or more geom2 objects produces expected geomet
 	exp = { { 9, 9 }, { 8, 9 }, { 8, 8 }, { 9, 8 } }
 	expect(function()
 		return geom2.validate(result3)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#obs).toBe(4)
 	expect(comparePoints(obs, exp)).toBe(true) -- intersect of two completely overlapping objects
 	local result4 = intersect(geometry1, geometry3)
@@ -60,7 +60,7 @@ test("intersect: intersect of one or more geom2 objects produces expected geomet
 	}
 	expect(function()
 		return geom2.validate(result4)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#obs).toBe(8)
 	expect(comparePoints(obs, exp)).toBe(true)
 end)

@@ -12,7 +12,7 @@ test("polygon: providing only object.points creates expected geometry", function
 	local exp = { { 0, 0 }, { 100, 0 }, { 130, 50 }, { 30, 50 } }
 	expect(function()
 		return geom2.validate(geometry)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(obs, exp)).toBe(true)
 	geometry = polygon({
 		points = {
@@ -28,7 +28,7 @@ test("polygon: providing only object.points creates expected geometry", function
 	exp = { { 0, 0 }, { 100, 0 }, { 10, 80 }, { 10, 10 }, { 80, 10 }, { 0, 100 } }
 	expect(function()
 		return geom2.validate(geometry)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(obs, exp)).toBe(true)
 end)
 test("polygon: providing object.points (array) and object.path (array) creates expected geometry", function()
@@ -40,7 +40,7 @@ test("polygon: providing object.points (array) and object.path (array) creates e
 	local exp = { { 30, 50 }, { 130, 50 }, { 100, 0 }, { 0, 0 } }
 	expect(function()
 		return geom2.validate(geometry)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(obs, exp)).toBe(true) -- multiple paths
 	geometry = polygon({
 		points = { { 0, 0 }, { 100, 0 }, { 0, 100 }, { 10, 10 }, { 80, 10 }, { 10, 80 } },
@@ -50,7 +50,7 @@ test("polygon: providing object.points (array) and object.path (array) creates e
 	exp = { { 0, 0 }, { 100, 0 }, { 10, 80 }, { 10, 10 }, { 80, 10 }, { 0, 100 } }
 	expect(function()
 		return geom2.validate(geometry)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(obs, exp)).toBe(true) -- multiple points and paths
 	geometry = polygon({
 		points = {
@@ -63,7 +63,7 @@ test("polygon: providing object.points (array) and object.path (array) creates e
 	exp = { { 0, 0 }, { 100, 0 }, { 10, 80 }, { 10, 10 }, { 80, 10 }, { 0, 100 } }
 	expect(function()
 		return geom2.validate(geometry)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(obs, exp)).toBe(true)
 end)
 test("polygon: clockwise points", function()

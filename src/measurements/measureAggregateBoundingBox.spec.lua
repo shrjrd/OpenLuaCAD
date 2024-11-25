@@ -1,6 +1,7 @@
 -- ROBLOX NOTE: no upstream
 local JestGlobals = require("@DevPackages/JestGlobals")
 local test, expect = JestGlobals.test, JestGlobals.expect
+local stringify = require("@Packages/luau-json").encode
 
 local cube = require("../primitives").cube
 local measureAggregateBoundingBox = require("./measureAggregateBoundingBox")
@@ -22,8 +23,8 @@ end)
 test("measureAggregateBoundingBox (multiple objects) does not change original bounds", function()
 	local cube1 = cube({ size = 4, center = { 4, 10, 20 } })
 	local cube2 = cube({ size = 6, center = { 0, 20, 20 } })
-	local objectBoundsBefore = JSON.stringify(measureBoundingBox(cube1, cube2))
+	local objectBoundsBefore = stringify(measureBoundingBox(cube1, cube2))
 	measureAggregateBoundingBox(cube1, cube2)
-	local objectBoundsAfter = JSON.stringify(measureBoundingBox(cube1, cube2))
+	local objectBoundsAfter = stringify(measureBoundingBox(cube1, cube2))
 	expect(objectBoundsBefore).toBe(objectBoundsAfter)
 end)

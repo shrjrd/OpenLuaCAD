@@ -1,6 +1,6 @@
 -- ROBLOX NOTE: no upstream
-local Packages = game.ReplicatedStorage.Packages
-local LuauPolyfill = require(Packages.LuauPolyfill)
+
+local LuauPolyfill = require("@Packages/LuauPolyfill")
 local Error = LuauPolyfill.Error
 local Object = LuauPolyfill.Object
 local geom3 = require("../../geometries/geom3")

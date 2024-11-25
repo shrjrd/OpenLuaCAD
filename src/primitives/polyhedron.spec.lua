@@ -55,7 +55,7 @@ test("polyhedron (points and faces)", function()
 	}
 	expect(function()
 		return geom3.validate(obs)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#pts).toEqual(6)
 	expect(comparePolygonsAsPoints(pts, exp)).toBe(true) -- test orientation
 	points = { { 10, 10, 0 }, { 10, -10, 0 }, { -10, -10, 0 }, { -10, 10, 0 }, { 0, 0, 10 } }
@@ -72,7 +72,7 @@ test("polyhedron (points and faces)", function()
 	}
 	expect(function()
 		return geom3.validate(obs)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#pts).toEqual(6)
 	expect(comparePolygonsAsPoints(pts, exp)).toBe(true)
 end)

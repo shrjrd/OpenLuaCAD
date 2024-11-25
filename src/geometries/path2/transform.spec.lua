@@ -25,7 +25,7 @@ test("transform: adjusts the transforms of path", function()
 	}
 	local geometry = fromPoints({}, points)
 	local another = transform(rotate90, geometry)
-	expect(geometry)["not"].toBe(another)
+	expect(geometry).never.toBe(another)
 	expect(comparePoints(another.points, expected.points)).toBe(true)
 	expect(another.isClosed).toBe(false)
 	expect(compareVectors(another.transforms, expected.transforms)).toBe(true) -- expect lazy transform, i.e. only the transforms change

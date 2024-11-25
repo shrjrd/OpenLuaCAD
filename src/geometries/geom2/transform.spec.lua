@@ -31,7 +31,7 @@ test("transform: adjusts the transforms of geom2", function()
 	}
 	local geometry = fromPoints(points)
 	local another = transform(rotate90, geometry)
-	expect(geometry)["not"].toBe(another)
+	expect(geometry).never.toBe(another)
 	expect(comparePoints(
 		another.sides[
 			1 --[[ ROBLOX adaptation: added 1 to array index ]]

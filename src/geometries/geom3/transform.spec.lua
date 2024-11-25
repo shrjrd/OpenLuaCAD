@@ -24,7 +24,7 @@ test("transform: Adjusts the transforms of a populated geom3", function()
 	}
 	local geometry = fromPoints(points)
 	local another = transform(rotate90, geometry)
-	expect(geometry)["not"].toBe(another)
+	expect(geometry).never.toBe(another)
 	expect(comparePolygons(
 		another.polygons[
 			1 --[[ ROBLOX adaptation: added 1 to array index ]]

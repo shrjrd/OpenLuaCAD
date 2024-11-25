@@ -34,7 +34,7 @@ test("scission: scission of one or more geom3 objects produces expected geometry
 		][
 			1 --[[ ROBLOX adaptation: added 1 to array index ]]
 		])
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(result2[
 		3 --[[ ROBLOX adaptation: added 1 to array index ]]
 	].length).toBe(1)
@@ -44,7 +44,7 @@ test("scission: scission of one or more geom3 objects produces expected geometry
 		][
 			1 --[[ ROBLOX adaptation: added 1 to array index ]]
 		])
-	end)["not"].toThrow()
+	end).never.toThrow()
 end)
 test("scission: scission of complex geom3 produces expected geometry", function()
 	local geometry1 = torus({ outerRadius = 40, innerRadius = 5, outerSegments = 16, innerSegments = 16 })
@@ -58,16 +58,16 @@ test("scission: scission of complex geom3 produces expected geometry", function(
 	expect(pc3).toBe(512) -- due to retessellate
 	local result1 = scission(geometry3)
 	expect(#result1).toBe(2)
-	t.notThrows:skip(function()
+	--[=[t.notThrows:skip(function()
 		return geom3.validate(result1[
 			1 --[[ ROBLOX adaptation: added 1 to array index ]]
 		])
-	end)
-	t.notThrows:skip(function()
+	end)]=]
+	--[=[t.notThrows:skip(function()
 		return geom3.validate(result1[
 			2 --[[ ROBLOX adaptation: added 1 to array index ]]
 		])
-	end)
+	end)]=]
 	local rc1 = geom3.toPolygons(result1[
 		1 --[[ ROBLOX adaptation: added 1 to array index ]]
 	]).length

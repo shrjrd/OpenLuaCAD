@@ -1,9 +1,9 @@
 -- ROBLOX NOTE: no upstream
-local Packages = game.ReplicatedStorage.Packages
-local LuauPolyfill = require(Packages.LuauPolyfill)
+
+local LuauPolyfill = require("@Packages/LuauPolyfill")
 local Error = LuauPolyfill.Error
 local setTimeout = LuauPolyfill.setTimeout
-local Promise = require(Packages.promise)
+local Promise = require("@Packages/promise")
 local JestGlobals = require("@DevPackages/JestGlobals")
 local test, _expect = JestGlobals.test, JestGlobals.expect
 

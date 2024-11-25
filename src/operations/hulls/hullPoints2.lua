@@ -1,7 +1,7 @@
 -- ROBLOX NOTE: no upstream
-local Packages = game.ReplicatedStorage.Packages
+
 local Number_EPSILON = 2.220446049250313e-16
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@Packages/LuauPolyfill")
 local Array = LuauPolyfill.Array
 local vec2 = require("../../maths/vec2")
 -- Returned "angle" is really 1/tan (inverse of slope) made negative to increase with angle.

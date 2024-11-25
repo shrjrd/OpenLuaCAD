@@ -1,6 +1,6 @@
 -- ROBLOX NOTE: no upstream
-local Packages = game.ReplicatedStorage.Packages
-local LuauPolyfill = require(Packages.LuauPolyfill)
+
+local LuauPolyfill = require("@Packages/LuauPolyfill")
 local Boolean = LuauPolyfill.Boolean
 local Object = LuauPolyfill.Object
 local defaultFont = require("./fonts/single-line/hershey/simplex")

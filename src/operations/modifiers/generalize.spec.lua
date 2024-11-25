@@ -51,7 +51,7 @@ test("generalize: generalize of a geom3 produces an expected geom3", function()
 	}
 	expect(function()
 		return geom3.validate(result)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePolygonsAsPoints(pts, exp)).toBe(true) -- apply snap only
 	result = generalize({ snap = true }, geometry1)
 	pts = geom3.toPoints(result)
@@ -95,7 +95,7 @@ test("generalize: generalize of a geom3 produces an expected geom3", function()
 	}
 	expect(function()
 		return geom3.validate(result)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePolygonsAsPoints(pts, exp)).toBe(true) -- apply triangulate only
 	result = generalize({ triangulate = true }, geometry1)
 	pts = geom3.toPoints(result)
@@ -163,7 +163,7 @@ test("generalize: generalize of a geom3 produces an expected geom3", function()
 	}
 	expect(function()
 		return geom3.validate(result)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePolygonsAsPoints(pts, exp)).toBe(true)
 	local geometry2 = result -- save the triangles for another test
 	-- apply simplify only (triangles => quads)
@@ -209,7 +209,7 @@ test("generalize: generalize of a geom3 produces an expected geom3", function()
 	}
 	expect(function()
 		return geom3.validate(result)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePolygonsAsPoints(pts, exp)).toBe(true)
 end)
 test("generalize: generalize of a geom3 with T junctions produces an expected geom3", function()
@@ -266,6 +266,6 @@ test("generalize: generalize of a geom3 with T junctions produces an expected ge
 	}
 	expect(function()
 		return geom3.validate(result)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePolygonsAsPoints(pts, exp)).toBe(true)
 end)

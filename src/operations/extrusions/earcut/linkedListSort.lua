@@ -1,6 +1,6 @@
 -- ROBLOX NOTE: no upstream
-local Packages = game.ReplicatedStorage.Packages
-local LuauPolyfill = require(Packages.LuauPolyfill)
+
+local LuauPolyfill = require("@Packages/LuauPolyfill")
 local Boolean = LuauPolyfill.Boolean
 -- Simon Tatham's linked list merge sort algorithm
 -- https://www.chiark.greenend.org.uk/~sgtatham/algorithms/listsort.html

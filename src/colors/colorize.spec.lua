@@ -46,25 +46,25 @@ test("color (rgba on geometry)", function()
 	local obj3 = poly3.create({ { 0, 0, 0 }, { 1, 0, 0 }, { 1, 1, 0 } })
 	local obs = colorize({ 1, 1, 0.5, 0.8 }, obj0, obj1, obj2, obj3)
 	expect(#obs).toBe(4)
-	expect(obj0)["not"].toBe(obs[
+	expect(obj0).never.toBe(obs[
 		1 --[[ ROBLOX adaptation: added 1 to array index ]]
 	])
 	expect(obs[
 		1 --[[ ROBLOX adaptation: added 1 to array index ]]
 	].color).toEqual({ 1, 1, 0.5, 0.8 })
-	expect(obj1)["not"].toBe(obs[
+	expect(obj1).never.toBe(obs[
 		2 --[[ ROBLOX adaptation: added 1 to array index ]]
 	])
 	expect(obs[
 		2 --[[ ROBLOX adaptation: added 1 to array index ]]
 	].color).toEqual({ 1, 1, 0.5, 0.8 })
-	expect(obj2)["not"].toBe(obs[
+	expect(obj2).never.toBe(obs[
 		3 --[[ ROBLOX adaptation: added 1 to array index ]]
 	])
 	expect(obs[
 		3 --[[ ROBLOX adaptation: added 1 to array index ]]
 	].color).toEqual({ 1, 1, 0.5, 0.8 })
-	expect(obj3)["not"].toBe(obs[
+	expect(obj3).never.toBe(obs[
 		4 --[[ ROBLOX adaptation: added 1 to array index ]]
 	])
 	expect(obs[
@@ -76,14 +76,14 @@ test("color (returns new object)", function()
 	-- const obj2 = geom2.fromPoints([[0, 0], [1, 0], [0, 1]])
 	local obj3 = geom2.fromPoints({ { 0, 0 }, { 1, 0 }, { 0, 1 } })
 	local obs = colorize({ 1, 1, 1, 0.8 }, obj0, obj3)
-	expect(obj0)["not"].toBe(obs[
+	expect(obj0).never.toBe(obs[
 		1 --[[ ROBLOX adaptation: added 1 to array index ]]
 	])
 	expect(obs[
 		1 --[[ ROBLOX adaptation: added 1 to array index ]]
 	].color).toEqual({ 1, 1, 1, 0.8 })
 	expect(obj0.color).toBe(nil)
-	expect(obj3)["not"].toBe(obs[
+	expect(obj3).never.toBe(obs[
 		2 --[[ ROBLOX adaptation: added 1 to array index ]]
 	])
 	expect(obs[

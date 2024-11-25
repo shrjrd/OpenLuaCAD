@@ -1,6 +1,6 @@
 -- ROBLOX NOTE: no upstream
-local Packages = game.ReplicatedStorage.Packages
-local LuauPolyfill = require(Packages.LuauPolyfill)
+
+local LuauPolyfill = require("@Packages/LuauPolyfill")
 local Boolean = LuauPolyfill.Boolean
 local plane = require("../../../maths/plane")
 local poly3 = require("../../../geometries/poly3") -- # class Node

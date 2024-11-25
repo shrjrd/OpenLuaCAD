@@ -28,7 +28,7 @@ test("rotate: rotating of a path2 produces expected changes to points", function
 	obs = path2.toPoints(rotated)
 	expect(function()
 		return path2.validate(rotated)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(obs, exp)).toBe(true)
 end)
 test("rotate: rotating of a geom2 produces expected changes to points", function()
@@ -38,13 +38,13 @@ test("rotate: rotating of a geom2 produces expected changes to points", function
 	local exp = { { 0, 0 }, { 0, -1 }, { 1, 0 } }
 	expect(function()
 		return geom2.validate(rotated)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(obs, exp)).toBe(true)
 	rotated = rotateZ(-TAU / 4, geometry)
 	obs = geom2.toPoints(rotated)
 	expect(function()
 		return geom2.validate(rotated)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(obs, exp)).toBe(true)
 end)
 test("rotate: rotating of a geom3 produces expected changes to polygons", function()
@@ -107,13 +107,13 @@ test("rotate: rotating of a geom3 produces expected changes to polygons", functi
 	}
 	expect(function()
 		return geom3.validate(rotated)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePolygonsAsPoints(obs, exp)).toBe(true)
 	rotated = rotateX(TAU / 4, geometry)
 	obs = geom3.toPoints(rotated)
 	expect(function()
 		return geom3.validate(rotated)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePolygonsAsPoints(obs, exp)).toBe(true) -- rotate about Y
 	rotated = rotate({ 0, -TAU / 4 }, geometry)
 	obs = geom3.toPoints(rotated)
@@ -157,7 +157,7 @@ test("rotate: rotating of a geom3 produces expected changes to polygons", functi
 	}
 	expect(function()
 		return geom3.validate(rotated)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePolygonsAsPoints(obs, exp)).toBe(true)
 	rotated = rotateY(-TAU / 4, geometry)
 	obs = geom3.toPoints(rotated)
@@ -204,13 +204,13 @@ test("rotate: rotating of a geom3 produces expected changes to polygons", functi
 	}
 	expect(function()
 		return geom3.validate(rotated)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePolygonsAsPoints(obs, exp)).toBe(true)
 	rotated = rotateZ(TAU / 2, geometry)
 	obs = geom3.toPoints(rotated)
 	expect(function()
 		return geom3.validate(rotated)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePolygonsAsPoints(obs, exp)).toBe(true)
 end)
 test("rotate: rotating of multiple objects produces expected changes", function()
@@ -229,7 +229,7 @@ test("rotate: rotating of multiple objects produces expected changes", function(
 		return path2.validate(rotated[
 			2 --[[ ROBLOX adaptation: added 1 to array index ]]
 		])
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(obs1, exp1)).toBe(true)
 	local obs2 = geom2.toPoints(rotated[
 		3 --[[ ROBLOX adaptation: added 1 to array index ]]
@@ -239,6 +239,6 @@ test("rotate: rotating of multiple objects produces expected changes", function(
 		return geom2.validate(rotated[
 			3 --[[ ROBLOX adaptation: added 1 to array index ]]
 		])
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(comparePoints(obs2, exp2)).toBe(true)
 end)

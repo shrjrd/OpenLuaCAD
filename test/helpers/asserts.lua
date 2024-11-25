@@ -85,7 +85,7 @@ end
 local function assertSameGeometry(t, observed, expected, failMessage)
 	if
 		not Boolean.toJSBoolean(containsCSG(observed, expected))
-		or not Boolean.toJSBoolean(containsCSG(observed, expected))
+		--or not Boolean.toJSBoolean(containsCSG(observed, expected))
 	then
 		failMessage = if failMessage == nil then "CSG do not have the same geometry" else failMessage
 		t:fail(failMessage)

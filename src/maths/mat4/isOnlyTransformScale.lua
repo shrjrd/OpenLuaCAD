@@ -1,7 +1,7 @@
 -- ROBLOX NOTE: no upstream
-local Packages = game.ReplicatedStorage.Packages
+
 local Number_EPSILON = 2.220446049250313e-16
-local LuauPolyfill = require(Packages.LuauPolyfill)
+local LuauPolyfill = require("@Packages/LuauPolyfill")
 local Boolean = LuauPolyfill.Boolean
 local function isZero(num)
 	return math.abs(num) < Number_EPSILON --[[ ROBLOX CHECK: operator '<' works only if either both arguments are strings or both are a number ]]

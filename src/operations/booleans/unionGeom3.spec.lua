@@ -193,16 +193,16 @@ test("union of one or more geom3 objects produces expected geometry", function()
 			{ 0.9999999999999998, 1.0000000000000002, 1.414213562373095 },
 		},
 	}
-	t.notThrows:skip(function()
+	--[=[t.notThrows:skip(function()
 		return geom3.validate(result1)
-	end)
+	end)]=]
 	expect(comparePolygonsAsPoints(obs, exp)).toBe(true) -- union of two non-overlapping objects
 	local geometry2 = center({ relativeTo = { 10, 10, 10 } }, cuboid({ size = { 4, 4, 4 } }))
 	local result2 = union(geometry1, geometry2)
 	obs = geom3.toPoints(result2)
-	t.notThrows:skip(function()
+	--[=[t.notThrows:skip(function()
 		return geom3.validate(result2)
-	end)
+	end)]=]
 	expect(#obs).toBe(38) -- union of two partially overlapping objects
 	local geometry3 = cuboid({ size = { 18, 18, 18 } })
 	local result3 = union(geometry2, geometry3)
@@ -227,9 +227,9 @@ test("union of one or more geom3 objects produces expected geometry", function()
 		{ { -9, 9, 9 }, { -9, 8, 9 }, { 8, 8, 9 }, { 8, 9, 9 } },
 		{ { -9, 8, 9 }, { -9, -9, 9 }, { 9, -9, 9 }, { 9, 8, 9 } },
 	}
-	t.notThrows:skip(function()
+	--[=[t.notThrows:skip(function()
 		return geom3.validate(result3)
-	end)
+	end)]=]
 	expect(#obs).toBe(18)
 	expect(comparePolygonsAsPoints(obs, exp)).toBe(true) -- union of two completely overlapping objects
 	local result4 = union(geometry1, geometry3)
@@ -244,7 +244,7 @@ test("union of one or more geom3 objects produces expected geometry", function()
 	}
 	expect(function()
 		return geom3.validate(result4)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#obs).toBe(6)
 	expect(comparePolygonsAsPoints(obs, exp)).toBe(true)
 end)
@@ -255,6 +255,6 @@ test("union of geom3 with rounding issues #137", function()
 	local pts = geom3.toPoints(obs)
 	expect(function()
 		return geom3.validate(obs)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#pts).toBe(6) -- number of polygons in union
 end)

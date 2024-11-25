@@ -28,7 +28,7 @@ test("line3: reverse() called with two parameters should update a line3 with pro
 	]
 	expect(compareVectors(pnt, { 0, 0, 0 })).toBe(true)
 	expect(compareVectors(dir, { 0, 0, -1 })).toBe(true)
-	expect(line1)["not"].toBe(out)
+	expect(line1).never.toBe(out)
 	expect(rev).toBe(out) -- reverse in place
 	local line2 = fromPoints(create(), { 1, 0, 0 }, { 0, 1, 0 })
 	rev = reverse(line2, line2)

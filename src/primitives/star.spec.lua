@@ -22,7 +22,7 @@ test("star (defaults)", function()
 	}
 	expect(function()
 		return geom2.validate(geometry)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#pts).toEqual(10)
 	expect(comparePoints(pts, exp)).toBe(true)
 end)
@@ -44,7 +44,7 @@ test("star (options)", function()
 	}
 	expect(function()
 		return geom2.validate(geometry)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#pts).toEqual(10)
 	expect(comparePoints(pts, exp)).toBe(true) -- test vertices
 	geometry = star({ outerRadius = 5, vertices = 8 })
@@ -69,7 +69,7 @@ test("star (options)", function()
 	}
 	expect(function()
 		return geom2.validate(geometry)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#pts).toEqual(16)
 	expect(comparePoints(pts, exp)).toBe(true) -- test density
 	geometry = star({ outerRadius = 5, vertices = 8, density = 3 })
@@ -94,7 +94,7 @@ test("star (options)", function()
 	}
 	expect(function()
 		return geom2.validate(geometry)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#pts).toEqual(16)
 	expect(comparePoints(pts, exp)).toBe(true) -- test innerRadius
 	geometry = star({ outerRadius = 5, vertices = 8, innerRadius = 1 })
@@ -119,7 +119,7 @@ test("star (options)", function()
 	}
 	expect(function()
 		return geom2.validate(geometry)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#pts).toEqual(16)
 	expect(comparePoints(pts, exp)).toBe(true) -- test start angle
 	geometry = star({ outerRadius = 5, startAngle = (360 - 45) * 0.017453292519943295 })
@@ -138,7 +138,7 @@ test("star (options)", function()
 	}
 	expect(function()
 		return geom2.validate(geometry)
-	end)["not"].toThrow()
+	end).never.toThrow()
 	expect(#pts).toEqual(10)
 	expect(comparePoints(pts, exp)).toBe(true)
 end)
